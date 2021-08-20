@@ -401,7 +401,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = naverMap;
         mMap.setMapType(NaverMap.MapType.Satellite);
         naverMap.setLocationSource(mLocationSource);
-
+        
+        //군산대로 위치 이동
+        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(new LatLng(35.945256,126.682133));
+        naverMap.moveCamera(cameraUpdate);
 
     }
 

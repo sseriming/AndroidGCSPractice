@@ -36,8 +36,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ff7605e-20fc-431c-87de-195c190a76b6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mygcs/src/main/java/com/viasofts/mygcs/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/mygcs/src/main/java/com/viasofts/mygcs/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mygcs/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mygcs/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
