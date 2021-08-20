@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidGCSPractice.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidGCSPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ClientLib/AndroidGCSPractice.ClientLib.iml" filepath="$PROJECT_DIR$/.idea/modules/ClientLib/AndroidGCSPractice.ClientLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dependencyLibs/Mavlink/AndroidGCSPractice.Mavlink.iml" filepath="$PROJECT_DIR$/.idea/modules/dependencyLibs/Mavlink/AndroidGCSPractice.Mavlink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/StarterApp/AndroidGCSPractice.StarterApp.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/StarterApp/AndroidGCSPractice.StarterApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mygcs/AndroidGCSPractice.mygcs.iml" filepath="$PROJECT_DIR$/.idea/modules/mygcs/AndroidGCSPractice.mygcs.iml" />
+    </modules>
+  </component>
+</project>

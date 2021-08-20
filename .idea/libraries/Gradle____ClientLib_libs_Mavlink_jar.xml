@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./ClientLib/libs/Mavlink.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ClientLib/libs/Mavlink.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
