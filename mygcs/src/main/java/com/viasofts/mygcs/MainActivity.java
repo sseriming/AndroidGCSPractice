@@ -1,6 +1,7 @@
 package com.viasofts.mygcs;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
@@ -19,7 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraUpdate;
+import com.naver.maps.map.overlay.LocationOverlay;
 import com.naver.maps.map.overlay.Marker;
+import com.naver.maps.map.overlay.PolylineOverlay;
 import com.o3dr.services.android.lib.drone.property.Attitude;
 import com.o3dr.services.android.lib.drone.property.Battery;
 import com.naver.maps.map.LocationTrackingMode;
@@ -65,16 +70,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final String TAG = MainActivity.class.getSimpleName();
     private ArrayList<String> mTextInRecycleerView = new ArrayList<>();
 
+
+    private PolylineOverlay mPolyline = new PolylineOverlay();
+    private ArrayList<LatLng> mLocationCollection = new ArrayList<LatLng>();
     private Drone drone;
     private int droneType = Type.TYPE_UNKNOWN;
     private ControlTower controlTower;
     private final Handler handler = new Handler();
     private FusedLocationSource mLocationSource;
     private Marker dronePositionMarker = new Marker();
-
+    private FusedLocationSource locationSource;
+    LatLng droneposition;
     private static final int DEFAULT_UDP_PORT = 14550;
     private static final int DEFAULT_USB_BAUD_RATE = 57600;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
+    private Boolean mCameraFix = false;
+
+    private LatLng mCurrentDronePosition;
+    private Marker mDroneMarker;
+
 
     private Spinner modeSelector;
 
@@ -90,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         final Context context = getApplicationContext();
         this.controlTower = new ControlTower(context);
         this.drone = new Drone(context);
+        mDroneMarker = new Marker();
 
         mLocationSource =
                 new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
@@ -149,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         this.drone.registerDroneListener(this);
     }
 
+
     @Override
     public void onTowerDisconnected() {
         alertUser("DroneKit-Android Interrupted");
@@ -158,63 +174,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     // ==========================================================
 
 
-
-//    @Override
-//    public void onDroneEvent(String event, Bundle extras) {
-//        Button connetButton = (Button) findViewById(R.id.connectBtn);
-//        switch (event) {
-//            case AttributeEvent.STATE_CONNECTED:
-//                alertUser("Drone Connected");
-//                updateConnectedButton(this.drone.isConnected());
-//                updateArmButton();
-//                checkSoloState();
-//                break;
-//
-//            case AttributeEvent.STATE_DISCONNECTED:
-//                alertUser("Drone Disconnected");
-//                updateConnectedButton(this.drone.isConnected());
-//                updateArmButton();
-//                break;
-//
-//            case AttributeEvent.STATE_UPDATED:
-//            case AttributeEvent.STATE_ARMING:
-//                updateArmButton();
-//                break;
-//
-//            case AttributeEvent.TYPE_UPDATED:
-//                Type newDroneType = this.drone.getAttribute(AttributeType.TYPE);
-//                if (newDroneType.getDroneType() != this.droneType) {
-//                    this.droneType = newDroneType.getDroneType();
-//                    updateVehicleModesForType(this.droneType);
-//                }
-//                break;
-//
-//            case AttributeEvent.STATE_VEHICLE_MODE:
-//                updateVehicleMode();
-//                break;
-//
-//            case AttributeEvent.SPEED_UPDATED:
-//                updateSpeed();
-//                break;
-//
-//            case AttributeEvent.ALTITUDE_UPDATED:
-//                updateAltitude();
-//                break;
-//
-//            case AttributeEvent.HOME_UPDATED:
-//                updateDistanceFromHome();
-//                break;
-//
-//            default:
-//                // Log.i("DRONE_EVENT", event); //Uncomment to see events from the drone
-//                break;
-//        }
-//    }
-
     @Override
     public void onDroneEvent(String event, Bundle extras) {
         Button connetcButton = (Button) findViewById(R.id.connectBtn);
         switch (event) {
+
             case AttributeEvent.STATE_CONNECTED:
                 alertUser("Drone Connected");
                 connetcButton.setText("Disconnect");
@@ -275,15 +239,27 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             case AttributeEvent.BATTERY_UPDATED:
                 updateBattery();
+                break;
 
             case AttributeEvent.GPS_COUNT:
                 countGPS();
+                break;
 
             case AttributeEvent.ATTITUDE_UPDATED:
-//                updateAttitude();
+                updateAttitude();
+                break;
 
             case AttributeEvent.GPS_POSITION:
-//                updateGps();
+                Gps gps = this.drone.getAttribute(AttributeType.GPS);
+                LatLong latLong = gps.getPosition();
+                if (latLong == null) {
+                    break;
+                } else {
+                    mCurrentDronePosition = new LatLng(gps.getPosition().getLatitude(), gps.getPosition().getLongitude());
+                    Log.d("myLog", "현재드론의 위치 : " + mCurrentDronePosition);
+                    updateDronePostion(mCurrentDronePosition);
+                }
+                break;
 
             default:
                 // Log.i("DRONE_EVENT", event); //Uncomment to see events from the drone
@@ -308,17 +284,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-
-    //드론 연결 및 해제
-//    public void onBtnConnectTap(View view) {
-//        if (this.drone.isConnected()) {
-//            this.drone.disconnect();
-//        } else{
-//            ConnectionParameter params = ConnectionParameter.newUdpConnection(null);
-//            this.drone.connect(params);
-//        }
-//
-//    }
 
     public void onFlightModeSelected(View view) {
         VehicleMode vehicleMode = (VehicleMode) this.modeSelector.getSelectedItem();
@@ -379,6 +344,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = naverMap;
         mMap.setMapType(NaverMap.MapType.Satellite);
         naverMap.setLocationSource(mLocationSource);
+
+
     }
 
 
@@ -477,6 +444,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         Battery droneBattery = this.drone.getAttribute(AttributeType.BATTERY);
         batteryView.setText(String.format("%3.1f", droneBattery.getBatteryVoltage()) + "V");
     }
+
     //gps
     protected void countGPS(){
         TextView countGPS = (TextView) findViewById(R.id.valueSatellite);
@@ -485,18 +453,18 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-//    protected void updateAttitude(){
-//        TextView viewYaw = (TextView) findViewById(R.id.valueYAW);
-//        Attitude yaw = this.drone.getAttribute(AttributeType.ATTITUDE);
-//        float yaw_360 = (float) yaw.getYaw();
-//        if(yaw_360 < 0){
-//            yaw_360 = 360 - Math.abs(yaw_360);
-//            if(yaw_360 == 360) yaw_360 = 0;
-//        }
-//        viewYaw.setText(String.format("%d", (int) yaw_360 ) + "deg");
-//        dronePositionMarker.setAngle(yaw_360);
-//        //mLocationOverlay.setBearing(yaw_360);
-//    }
+    protected void updateAttitude(){
+        TextView viewYaw = (TextView) findViewById(R.id.valueYAW);
+        Attitude yaw = this.drone.getAttribute(AttributeType.ATTITUDE);
+        float yaw_360 = (float) yaw.getYaw();
+        if(yaw_360 < 0){
+            yaw_360 = 360 - Math.abs(yaw_360);
+            if(yaw_360 == 360) yaw_360 = 0;
+        }
+        viewYaw.setText(String.format("%d", (int) yaw_360 ) + "deg");
+        dronePositionMarker.setAngle(yaw_360);
+        //mLocationOverlay.setBearing(yaw_360);
+    }
 
 
 
@@ -542,22 +510,28 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         this.modeSelector.setSelection(arrayAdapter.getPosition(vehicleMode));
     }
 
+
+
+
+
+
+
     // Helper methods
     // ==========================================================
-
     protected void alertUser(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         Log.d("mylog", message);
     }
 
+    private void updateDronePostion(LatLng latLng) {
+        //TODO 가져온 좌표를 가지고 드론마커를 갱신하세요.
+        mDroneMarker.setPosition(latLng);
+        mDroneMarker.setMap(mMap);
+    }
 
 
 
-//    private void initViews() {
-//        btnTest.setOnClickListener(new View.OnClickListener() {
-//
-//
-//        });
-//    }
+
+
 }
 

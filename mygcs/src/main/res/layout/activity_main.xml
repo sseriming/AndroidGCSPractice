@@ -180,7 +180,7 @@
         app:layout_constraintTop_toTopOf="@+id/map" />
 
     <TextView
-        android:id="@+id/YAW2"
+        android:id="@+id/statellite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="944dp"

@@ -494,6 +494,9 @@ public class MainActivity extends AppCompatActivity implements DroneListener, To
         return Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
 
+
+
+
     private void takePhoto() {
         SoloCameraApi.getApi(drone).takePhoto(new AbstractCommandListener() {
             @Override
