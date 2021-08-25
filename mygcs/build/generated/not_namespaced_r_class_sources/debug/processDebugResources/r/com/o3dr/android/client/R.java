@@ -71,20 +71,20 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int adjust_height = 0x7f08001d;
-        public static final int adjust_width = 0x7f08001e;
-        public static final int auto = 0x7f080025;
-        public static final int dark = 0x7f08003b;
-        public static final int hybrid = 0x7f08004f;
-        public static final int icon_only = 0x7f080052;
-        public static final int light = 0x7f08005a;
-        public static final int none = 0x7f080081;
-        public static final int normal = 0x7f080082;
-        public static final int satellite = 0x7f080090;
-        public static final int standard = 0x7f0800ae;
-        public static final int terrain = 0x7f0800b8;
-        public static final int wide = 0x7f0800cc;
-        public static final int wrap_content = 0x7f0800cf;
+        public static final int adjust_height = 0x7f08001f;
+        public static final int adjust_width = 0x7f080020;
+        public static final int auto = 0x7f080027;
+        public static final int dark = 0x7f08003d;
+        public static final int hybrid = 0x7f080051;
+        public static final int icon_only = 0x7f080054;
+        public static final int light = 0x7f08005c;
+        public static final int none = 0x7f080084;
+        public static final int normal = 0x7f080085;
+        public static final int satellite = 0x7f080093;
+        public static final int standard = 0x7f0800b1;
+        public static final int terrain = 0x7f0800bc;
+        public static final int wide = 0x7f0800d0;
+        public static final int wrap_content = 0x7f0800d3;
     }
     public static final class integer {
         private integer() {}
@@ -95,7 +95,7 @@ public final class R {
     public static final class layout {
         private layout() {}
 
-        public static final int list_item_tlog_info = 0x7f0a001d;
+        public static final int list_item_tlog_info = 0x7f0a001f;
     }
     public static final class string {
         private string() {}

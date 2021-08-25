@@ -11,6 +11,7 @@ anim abc_slide_out_bottom
 anim abc_slide_out_top
 anim abc_tooltip_enter
 anim abc_tooltip_exit
+array map_type
 array navermap_info_menu
 attr actionBarDivider
 attr actionBarItemBackground
@@ -864,6 +865,7 @@ drawable spinner_back
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
+id Altitudecontrol
 id CTRL
 id FUNCTION
 id META
@@ -892,6 +894,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addAltitude
 id adjust_height
 id adjust_width
 id alertTitle
@@ -959,6 +962,7 @@ id line3
 id listMode
 id list_item
 id map
+id maptype_spinner
 id media_actions
 id message
 id middle
@@ -1041,6 +1045,7 @@ id standard
 id start
 id statellite
 id status_bar_latest_event_content
+id subAltitude
 id submenuarrow
 id submit_area
 id tabMode
@@ -1107,6 +1112,8 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout custom_spinner_item
+layout custom_spinner_item_click
 layout list_item_tlog_info
 layout navermap_compass_view
 layout navermap_indoor_level_item

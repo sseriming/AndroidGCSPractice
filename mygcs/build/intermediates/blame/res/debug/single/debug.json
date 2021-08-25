@@ -2096,6 +2096,10 @@
         "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-2\\files-2.1\\64bd5697f2852c482174921cac15bedc\\res\\drawable-xxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
+        "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\layout_custom_spinner_item.xml.flat",
+        "source": "E:\\devwork\\AndroidGCSPractice\\mygcs\\src\\main\\res\\layout\\custom_spinner_item.xml"
+    },
+    {
         "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\drawable_abc_seekbar_track_material.xml.flat",
         "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-2\\files-2.1\\64bd5697f2852c482174921cac15bedc\\res\\drawable\\abc_seekbar_track_material.xml"
     },
@@ -2582,6 +2586,10 @@
     {
         "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-2\\files-2.1\\64bd5697f2852c482174921cac15bedc\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\layout_custom_spinner_item_click.xml.flat",
+        "source": "E:\\devwork\\AndroidGCSPractice\\mygcs\\src\\main\\res\\layout\\custom_spinner_item_click.xml"
     },
     {
         "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_navermap_default_location_overlay_sub_icon_arrow.png.flat",

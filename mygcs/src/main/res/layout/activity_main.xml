@@ -28,10 +28,14 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="25dp" />
 
+    <!--    android:layout_alignParentEnd="true"-->
+<!--    android:layout_alignParentRight="true"-->
+<!--    android:layout_below="@+id/connectionTypeLabel"-->
+
     <Button
         android:id="@+id/connectBtn"
-        android:layout_width="134dp"
-        android:layout_height="50dp"
+        android:layout_width="157dp"
+        android:layout_height="58dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#373636"
@@ -42,9 +46,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/map"
         app:layout_constraintEnd_toEndOf="parent" />
 
-<!--    android:layout_alignParentEnd="true"-->
-<!--    android:layout_alignParentRight="true"-->
-<!--    android:layout_below="@+id/connectionTypeLabel"-->
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
@@ -66,7 +67,7 @@
         android:textSize="20dp"
         android:onClick="onArmButtonTap"
         app:layout_constraintBottom_toBottomOf="@+id/map"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/vehicleModeLabelTextView"
@@ -192,6 +193,16 @@
         app:layout_constraintTop_toTopOf="@+id/map" />
 
     <Spinner
+        android:id="@+id/maptype_spinner"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/spinner_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
         android:id="@+id/modeSelect"
         android:layout_width="114dp"
         android:layout_height="27dp"
@@ -199,6 +210,38 @@
         android:background="@drawable/spinner_back"
         app:layout_constraintStart_toStartOf="@+id/map"
         app:layout_constraintTop_toTopOf="@+id/vehicleModeLabelTextView" />
+
+    <Button
+        android:id="@+id/Altitudecontrol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:text="이륙고도\n5.5m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/map" />
+
+    <Button
+        android:id="@+id/addAltitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="16dp"
+        android:text="+0.5m"
+        android:onClick="onAddTakeoffAltitude"
+        app:layout_constraintEnd_toEndOf="@+id/map"
+        app:layout_constraintTop_toTopOf="@+id/map"/>
+
+    <Button
+        android:id="@+id/subAltitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="16dp"
+        android:text="-0.5m"
+        android:onClick="onSubTakeoffAltitude"
+        app:layout_constraintEnd_toEndOf="@+id/map"
+        app:layout_constraintTop_toTopOf="@+id/map" />
 
 
     <!--    <Button-->
