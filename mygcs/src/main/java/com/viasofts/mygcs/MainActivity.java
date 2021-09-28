@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private Spinner modeSelector;
 
-
     Handler mainHandler;
     Spinner maptype_spinner;
     ConnectionParameter connParams;
@@ -317,7 +316,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
-//    //가이드 모드드drone
+//    //가이드 모드
 //   public static class GuideMode{
 //        static LatLng mGuidedPoint; //가이드모드 목적지 저장
 //        static Marker mMarkerGuide = new com.naver.maps.map.overlay.Marker(); //gcs 위치 표시 마커옵션

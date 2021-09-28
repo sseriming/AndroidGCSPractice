@@ -66,7 +66,7 @@ public final class R {
         public static final int common_google_signin_btn_text_light = 0x7f070065;
         public static final int common_google_signin_btn_text_light_focused = 0x7f070066;
         public static final int common_google_signin_btn_text_light_normal = 0x7f070067;
-        public static final int ic_stat_notify = 0x7f07006d;
+        public static final int ic_stat_notify = 0x7f07006e;
     }
     public static final class id {
         private id() {}

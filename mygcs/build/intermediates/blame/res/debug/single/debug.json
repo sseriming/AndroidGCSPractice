@@ -1896,6 +1896,10 @@
         "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-2\\files-2.1\\d564beee0dbbe09d5c62cd5d19476316\\res\\drawable-xxxhdpi-v4\\navermap_default_location_overlay_sub_icon_cone.png"
     },
     {
+        "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\drawable-v24_marker_guide.png.flat",
+        "source": "E:\\devwork\\AndroidGCSPractice\\mygcs\\src\\main\\res\\drawable-v24\\marker_guide.png"
+    },
+    {
         "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-2\\files-2.1\\64bd5697f2852c482174921cac15bedc\\res\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png"
     },
@@ -2546,6 +2550,10 @@
     {
         "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-2\\files-2.1\\64bd5697f2852c482174921cac15bedc\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\drawable-v24_drone.png.flat",
+        "source": "E:\\devwork\\AndroidGCSPractice\\mygcs\\src\\main\\res\\drawable-v24\\drone.png"
     },
     {
         "merged": "E:\\devwork\\AndroidGCSPractice\\mygcs\\build\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_text_dark.xml.flat",
